@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container_my {
+  @apply container mx-auto w-[92%] md:w-4/5;
+}
+.shadow_my {
+  box-shadow: 0 0 10px -2px #7e7e7e;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bae6fd;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8cd7ff;
+  border-radius: 5px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  width: 200px;
+}
+
+.filter-section {
+  margin-bottom: 2rem;
+}
