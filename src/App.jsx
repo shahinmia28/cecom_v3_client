@@ -18,6 +18,7 @@ import { Toaster } from 'react-hot-toast';
 import PaymentSuccess from './pages/user/PaymentSuccess.jsx';
 import PaymentFail from './pages/PaymentFail.jsx';
 import Products from './Products.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
@@ -44,8 +45,8 @@ function App() {
           <Route path='admin/profile' element={<AdminProfile />} />
         </Route>
       </Routes>
+      <Footer />
       <Toaster />
-      <h1 className='bg-slate-600 text-white'>footer</h1>
     </BrowserRouter>
   );
 }

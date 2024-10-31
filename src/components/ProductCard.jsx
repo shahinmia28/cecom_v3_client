@@ -8,7 +8,7 @@ import { useCartContext } from '../context_reducer/context/cartContext';
 const ProductCard = ({ p }) => {
   const { addToCart } = useCartContext();
   const navigate = useNavigate();
-
+  // console.log(p);
   let totalRating;
   const totalReviews = p?.reviews?.length;
 
@@ -21,13 +21,13 @@ const ProductCard = ({ p }) => {
 
   return (
     <div
-      className='item-wrap relative p-2 flex flex-col justify-between group transition-all border border-slate-300 h-80 md:h-96 hover:shadow-lg'
-      id={p._id}
+      className='item-wrap relative p-2 bg-white border rounded-md flex flex-col justify-between group transition-all h-80 md:h-96 hover:shadow-lg'
+      id={p?._id}
     >
       <NavLink to={`/product_details/${p?.slug}`} className='z-10'>
         <div className='item'>
           <div className='img h-40 md:h-52'>
-            <img className='w-full h-full' src={p?.images[0].url} alt='img' />
+            <img className='w-full h-full' src={p?.images[0]?.url} alt='img' />
           </div>
           <div className='body h-20 md:h-28  flex flex-col justify-between'>
             <p className='font-semibold text-xs md:text-sm capitalize'>

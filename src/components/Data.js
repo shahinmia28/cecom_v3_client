@@ -132,3 +132,50 @@ export const productData = [
     company: 'Biofinity',
   },
 ];
+
+export const SliderData = [
+  {
+    image: '1.jpg',
+  },
+  {
+    image: '2.jpg',
+  },
+  {
+    image: '3.jpg',
+  },
+  // Add more images as needed
+];
+export const footerMenu = [
+  {
+    title: '/about_us/#top',
+    name: 'About Us',
+  },
+  {
+    title: '/contact/#top',
+    name: 'Contact',
+  },
+  {
+    title: '/privacy_policy/#top',
+    name: 'Privacy Policy',
+  },
+  {
+    title: '/data_policy/#top',
+    name: 'Data Policy',
+  },
+  {
+    title: '/terms_and_condition',
+    name: 'Terms & Condition',
+  },
+  {
+    title: '/return_policy',
+    name: 'Return Policy',
+  },
+  {
+    title: '/faq',
+    name: 'FAQ',
+  },
+  {
+    title: '/help',
+    name: 'Help',
+  },
+];

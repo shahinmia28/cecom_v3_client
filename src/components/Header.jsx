@@ -1,23 +1,34 @@
 import { TbSearch } from 'react-icons/tb';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { MdOutlineShoppingCart, MdAssignmentReturn } from 'react-icons/md';
 import { VscAccount } from 'react-icons/vsc';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import { FiPhoneCall } from 'react-icons/fi';
-import { RxDashboard } from 'react-icons/rx';
 import { LuClipboardList } from 'react-icons/lu';
 import { GiSelfLove } from 'react-icons/gi';
 import { IoIosArrowForward } from 'react-icons/io';
 import { HiHome } from 'react-icons/hi2';
 import { FaUsersBetweenLines } from 'react-icons/fa6';
+import { TfiLayoutGrid3 } from 'react-icons/tfi';
 
 import { useAuth } from '../context_reducer/context/authContext';
 import toast from 'react-hot-toast';
 import { HashLink } from 'react-router-hash-link';
+import { useSearchContext } from '../context_reducer/context/SearchContext';
 
 const Header = () => {
+  const { searchTerm, setSearchTerm } = useSearchContext();
+  const navigate = useNavigate();
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    navigate('/products');
+  };
+
   const [showMenu, setShowMenu] = useState(false);
   const [auth, setAuth] = useAuth();
   const handleLogOut = () => {
@@ -46,14 +57,18 @@ const Header = () => {
               </HashLink>
             </div>
             <div className='basis-1/2'>
-              <form className='w-full flex px-0 md:px-10'>
+              <form
+                className='w-full flex px-0 md:px-10'
+                onSubmit={searchSubmit}
+              >
                 <input
                   className='w-full p-1 md:p-2 focus:outline-none'
                   type='text'
                   name='search'
                   placeholder='Search Product'
+                  value={searchTerm}
+                  onChange={handleSearchChange}
                 />
-
                 <button
                   type='submit'
                   className='w-10 bg-indigo-100 transition-all hover:bg-orange-500 hover:text-white flex justify-center items-center'
@@ -81,9 +96,9 @@ const Header = () => {
       </div>
       {/* site menu */}
       <div
-        className={`site-menu ${
-          !showMenu ? 'translate-x-[-500px]' : 'translate-x-0'
-        } fixed top-0 z-50 h-screen overflow-hidden transition linear duration-500 w-80 origin-left bg-white shadow-xl shadow-sky-200 rounded-r-2xl`}
+        className={`site-menu fixed top-0 right-0 z-50 h-screen overflow-hidden transition-transform duration-500 ${
+          showMenu ? 'translate-x-0' : 'translate-x-full'
+        } w-80 bg-white shadow-xl shadow-sky-200 rounded-l-2xl`}
       >
         <div className='h-full overflow-y-auto p-6'>
           <div>
@@ -115,63 +130,8 @@ const Header = () => {
               </div>
             </div>
             <hr />
-            <div className='category-menu my-3'>
-              <h3 className='text-md font-semibold my-3'>Shope</h3>
-              <hr />
-              <ul className='font-semibold text-md text-slate-600 '>
-                <li className='flex justify-between py-1 my-2 items-center'>
-                  <NavLink
-                    to={'/mans-collection'}
-                    onClick={() => setShowMenu(false)}
-                    className=' hover:text-sky-500 '
-                  >
-                    Man's collection
-                  </NavLink>
-                  <span className='hover:text-sky-500 cursor-pointer'>
-                    <IoIosArrowForward size={20} />
-                  </span>
-                </li>
-                <li className='flex justify-between  py-1 my-2 items-center'>
-                  <NavLink
-                    to={'/women-collection'}
-                    onClick={() => setShowMenu(false)}
-                    className=' hover:text-sky-500'
-                  >
-                    Women's collection
-                  </NavLink>
-                  <span className='hover:text-sky-500 cursor-pointer'>
-                    <IoIosArrowForward size={20} />
-                  </span>
-                </li>
-                <li className='flex justify-between py-1 my-2 items-center'>
-                  <NavLink
-                    to={'/baby-mart'}
-                    onClick={() => setShowMenu(false)}
-                    className=' hover:text-sky-500 '
-                  >
-                    Baby Mart
-                  </NavLink>
-                  <span className='hover:text-sky-500 cursor-pointer'>
-                    <IoIosArrowForward size={20} />
-                  </span>
-                </li>
-                <li className='flex justify-between items-center py-1 my-2'>
-                  <NavLink
-                    to={'/new-fashion'}
-                    onClick={() => setShowMenu(false)}
-                    className=' hover:text-sky-500 '
-                  >
-                    New Fashion
-                  </NavLink>
-                  <span className='hover:text-sky-500 cursor-pointer'>
-                    <IoIosArrowForward size={20} />
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <hr />
+
             <div className='account-manage my-3'>
-              <h3 className='text-md font-semibold my-3'>Account</h3>
               <ul>
                 <li>
                   <HashLink
@@ -184,6 +144,19 @@ const Header = () => {
                       <HiHome size={17} />
                     </span>
                     <span className='hover:text-sky-500'>Home</span>
+                  </HashLink>
+                </li>
+                <li>
+                  <HashLink
+                    to={'products/#top'}
+                    smooth
+                    onClick={() => setShowMenu(false)}
+                    className='flex justify-start items-center py-1 my-1'
+                  >
+                    <span className='bg-orange-600 me-2 p-2 text-white rounded-full'>
+                      <TfiLayoutGrid3 size={17} />
+                    </span>
+                    <span className='hover:text-sky-500'>Products</span>
                   </HashLink>
                 </li>
                 <li>
