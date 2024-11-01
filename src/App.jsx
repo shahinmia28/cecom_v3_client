@@ -19,6 +19,7 @@ import PaymentSuccess from './pages/user/PaymentSuccess.jsx';
 import PaymentFail from './pages/PaymentFail.jsx';
 import Products from './Products.jsx';
 import Footer from './components/Footer.jsx';
+import MyOrder from './pages/user/MyOrder.jsx';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<CartPage />} />
+        <Route path='/my_order' element={<MyOrder />} />
         <Route path='/forget-password' element={<ForgetPassword />} />
         <Route path='product_details/:slug' element={<ProductDetails />} />
         <Route path='/products' element={<Products />} />

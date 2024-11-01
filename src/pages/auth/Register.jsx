@@ -31,7 +31,8 @@ const Register = () => {
         date_fo_birth: user.date_fo_birth,
       });
       if (res.data.success) {
-        toast.success(res.data.message);
+        toast.success('Registration success');
+        // toast.success(res.data.message);
         navigate('/login');
       }
     } catch (error) {

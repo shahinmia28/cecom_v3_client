@@ -297,7 +297,7 @@ const ProductDetails = () => {
                 <div className={showReview ? 'visible' : 'hidden'}>
                   {totalReviews ? (
                     product.reviews.map((review, i) => {
-                      console.log(review.user.image[0].url);
+                      // console.log(review.user.image[0].url);
                       return (
                         <div
                           key={i}

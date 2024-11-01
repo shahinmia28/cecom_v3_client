@@ -94,7 +94,7 @@ const CartPage = () => {
   // handle check out
   const handleCheckOutWithPayment = async () => {
     try {
-      const { data } = await axios.post(`${API}/api/product/order-checkout`, {
+      const { data } = await axios.post(`${API}/api/order/order-checkout`, {
         product: selectedProductForOrder,
         user: auth?.user,
         totalPrice: totalPrice,
@@ -111,7 +111,7 @@ const CartPage = () => {
   const handleCheckOutWithOutPayment = async () => {
     try {
       const { data } = await axios.post(
-        `${API}/api/product/order-checkout-without-payment`,
+        `${API}/api/order/order-checkout-without-payment`,
         {
           product: selectedProductForOrder,
           user: auth?.user,
@@ -120,11 +120,13 @@ const CartPage = () => {
       );
       if (data?.success) {
         // clearCart();
-        if (auth?.user?.role === 1) {
-          navigate('/dashboard/admin/profile', { state: 'MY_ORDER' });
-        } else {
-          navigate('/dashboard/user/profile', { state: 'MY_ORDER' });
-        }
+        // if (auth?.user?.role === 1) {
+        //   navigate('/dashboard/admin/profile', { state: 'MY_ORDER' });
+        // } else {
+        //   navigate('/dashboard/user/profile', { state: 'MY_ORDER' });
+        // }
+
+        navigate('/#top');
         toast.success(data?.message);
       } else {
         toast.error(data?.message);

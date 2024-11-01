@@ -16,7 +16,7 @@ const MyOrder = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${API}/api/auth/orders`);
+      const { data } = await axios.get(`${API}/api/order/orders`);
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ const MyOrder = () => {
   const handleCancelOrder = async (_id) => {
     try {
       const { data } = await axios.delete(
-        `${API}/api/product/cancel-order/${_id}`
+        `${API}/api/order/cancel-order/${_id}`
       );
       toast.success(data?.message);
       if (auth?.token) getOrders();
@@ -44,7 +44,7 @@ const MyOrder = () => {
   }, [auth?.token]);
 
   return (
-    <div className='px-2'>
+    <div className='px-2 container_my'>
       {orders?.length === 0 ? (
         <div className='flex h-screen justify-center items-center text-slate-500'>
           <h4>No Order Found </h4>

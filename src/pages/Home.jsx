@@ -5,6 +5,7 @@ import AllProductsSection from '../components/AllProductsSection';
 import FeatureProduct from '../components/FeatureProduct';
 import Services from '../components/Services';
 import ImageSlider from '../components/ImageSlider';
+import Video from '../components/Video';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       {/* <Trust /> */}
       <FeatureProduct />
       <AllProductsSection />
+      <Video />
       <Services />
     </div>
   );
