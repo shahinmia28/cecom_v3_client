@@ -37,7 +37,7 @@ const AllOrder = () => {
     try {
       if (sure) {
         const { data } = await axios.delete(
-          `${API}/api/product/cancel-order/${_id}`
+          `${API}/api/order/cancel-order/${_id}`
         );
         toast.success(data?.message);
         if (auth?.token) getOrders();
@@ -53,7 +53,7 @@ const AllOrder = () => {
 
   const handleChange = async (orderId, value) => {
     try {
-      await axios.put(`${API}/api/auth/order-status/${orderId}`, {
+      await axios.put(`${API}/api/order/order-status/${orderId}`, {
         status: value,
       });
       getOrders();
