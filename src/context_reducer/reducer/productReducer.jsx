@@ -6,25 +6,25 @@ const productReducer = (state, action) => {
         isLoading: true,
       };
     case 'SET_PRODUCTS':
-      const featureData = action.payload.filter((element) => {
-        return element.fetcher === true;
+      const featureData = action?.payload?.filter((element) => {
+        return element?.fetcher === true;
       });
 
       return {
         ...state,
         isLoading: false,
-        products: action.payload,
+        products: action?.payload,
         featureProducts: featureData,
       };
     case 'SET_CATEGORIES':
       return {
         ...state,
-        categories: action.payload,
+        categories: action?.payload,
       };
     case 'SET_COMPANIES':
       return {
         ...state,
-        companies: action.payload,
+        companies: action?.payload,
       };
 
     default:
